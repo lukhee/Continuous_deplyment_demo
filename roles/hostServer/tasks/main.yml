@@ -1,0 +1,36 @@
+---
+  - name: Install Node/NPM Package
+    become: yes
+    apt:
+      name: ['nodejs', 'npm']
+      state: latest
+      update_cache: yes
+
+  - name: Install PM2 Package
+    become: yes
+    npm:
+      # become: yes
+      global: yes
+      production: yes
+      name: pm2
+      state: present
+      # update_cache: yes
+
+  - name: Create Folder Directory
+    file: 
+      path: ~/web
+      owner: ubuntu 
+      group: ubuntu 
+      mode: 0755 
+      state: directory
+
+  - name: Ensure file exist in directory
+    command: touch ~/web/index.js
+
+  - name: Ensure file exist in directory
+    copy: 
+      src: files/index.js
+      dest: ~/web/index.js
+
+  - name: Start server
+    command: pm2 start ~/web/index.js -f

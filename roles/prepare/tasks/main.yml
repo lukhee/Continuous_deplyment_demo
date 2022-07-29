@@ -1,0 +1,16 @@
+---
+  - name: Update App Package
+    become: yes
+    become_method: sudo
+    apt:
+      update_cache: yes
+
+  - name: Upgrade Package
+    become: yes
+    apt:
+      upgrade: yes
+
+  - name: Remove dependencies that are longer required
+    become: yes
+    apt:
+      autoremove: yes
