@@ -1,6 +1,13 @@
 version: 2.1
-jobs:
 
+commands:
+  destroy_cloudformation:
+    description: "Delete CloudForamtion"
+    steps:
+      - run: aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5}
+          # when: on_fail
+
+jobs:
   create_infrastructure: 
       docker:
         - image: amazon/aws-cli
@@ -13,6 +20,7 @@ jobs:
                 --template-file template.yml \
                 --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
                 --region us-east-1
+        - destroy_cloudformation
 
   say-hello:
     docker:
