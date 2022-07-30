@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            export ANSIBLE_HOST_KEY_CHECKING=False
+            export ANSIBLE_HOST_KEY_CHECKING=true
             ansible-playbook -i inventory.txt main.yml
 
   say-hello:
