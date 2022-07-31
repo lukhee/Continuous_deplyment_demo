@@ -29,13 +29,14 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["83:ee:f3:de:e2:40:d7:56:90:1d:f5:6a:e1:b7:d1:9d"] 
+          fingerprints: ["83:ee:f3:de:e2:40:d7:56:90:1d:f5:6a:e1:b7:d1:9d"] # You can get this ID in the section where you registered the SSH Key
       - run:
-          name: Install Ansible
+          name: Install dependencies
           command: |
-            apk add --update ansible
+            # install the dependencies needed for your playbook
+            apk add --update ansible 
       - run:
-          name: Run Playbook and Configure server
+          name: Configure server
           command: |
             ansible-playbook -i inventory.txt main.yml
 
