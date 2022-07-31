@@ -1,2 +1,2 @@
 [All]
-ec2-54-221-39-19.compute-1.amazonaws.com
+54.221.39.19
