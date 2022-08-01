@@ -4,4 +4,7 @@
     user: ubuntu
     become: true
     become_method: sudo
-    become_user: root  
+    become_user: root
+    roles:
+      - prepare
+      - hostServer
