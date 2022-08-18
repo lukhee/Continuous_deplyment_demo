@@ -36,7 +36,7 @@ jobs:
             # install the dependencies needed for your playbook
             apk add --update ansible 
             
-      - run: apk add --update ansible openssh
+#       - run: apk add --update ansible openssh
       
       - run:
           name: Debug
